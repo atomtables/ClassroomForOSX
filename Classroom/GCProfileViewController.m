@@ -49,6 +49,9 @@
     if ([object isKindOfClass:[GCLoginManager class]]) {
         if ([keyPath isEqualToString:@"isAuthenticated"]) [self updateUIWithAuthenticationState:change];
         if ([keyPath isEqualToString:@"step"]) [self updateSheetUI];
+    } else {
+        // REQUIRED FIX: Allow modern NSViewController to handle its internal view/layout KVO.
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
