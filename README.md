@@ -12,3 +12,6 @@ time: 11pm
 
 ## plans
 many
+
+## os support
+anything but liquid glass (i hate xc26)
