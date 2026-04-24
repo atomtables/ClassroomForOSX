@@ -25,7 +25,7 @@
     if (self) {
         [[GCLoginManager main] addObserver:self
                                 forKeyPath:@"isAuthenticated"
-                                   options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew)
+                                   options:(NSKeyValueObservingOptionNew)
                                    context:nil];
     }
     return self;
