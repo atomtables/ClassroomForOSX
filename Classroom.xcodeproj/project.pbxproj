@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332A06C22F90450800AE2FD6 /* GCMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 332A06C12F90450800AE2FD6 /* GCMainWindow.m */; };
+		33455C922F97A1A4001CA394 /* GCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33455C902F97A1A4001CA394 /* GCProfileViewController.m */; };
+		33455C932F97A1A5001CA394 /* GCProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33455C912F97A1A4001CA394 /* GCProfileViewController.xib */; };
+		337F0B362F92EF6A00AA3ABF /* GCLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F0B352F92EF6A00AA3ABF /* GCLoginManager.m */; };
+		33A8B7AA2F9063630070D933 /* GCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7A82F9063630070D933 /* GCHomeViewController.m */; };
+		33A8B7AB2F9063630070D933 /* GCHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A8B7A92F9063630070D933 /* GCHomeViewController.xib */; };
+		33A8B7B02F9072840070D933 /* GCDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7AF2F9072840070D933 /* GCDataFetcher.m */; };
+		33A8B7B42F9073F80070D933 /* GCSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7B32F9073F80070D933 /* GCSettingsManager.m */; };
+		33A8B7B92F9108680070D933 /* GCDataProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7B82F9108680070D933 /* GCDataProcessor.m */; };
+		33A8B7BC2F9108E80070D933 /* GCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7BB2F9108E80070D933 /* GCCourse.m */; };
+		33A8B7BF2F9108E80070D933 /* GCUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7BE2F9108E80070D933 /* GCUserProfile.m */; };
 		33AFE3B22F7B7317006BA041 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33AFE3B12F7B7317006BA041 /* Cocoa.framework */; };
 		33AFE3BC2F7B7317006BA041 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 33AFE3BA2F7B7317006BA041 /* InfoPlist.strings */; };
 		33AFE3BE2F7B7317006BA041 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AFE3BD2F7B7317006BA041 /* main.m */; };
@@ -48,6 +59,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		332A06C02F90450800AE2FD6 /* GCMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMainWindow.h; sourceTree = "<group>"; };
+		332A06C12F90450800AE2FD6 /* GCMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMainWindow.m; sourceTree = "<group>"; };
+		33455C8F2F97A1A4001CA394 /* GCProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCProfileViewController.h; sourceTree = "<group>"; };
+		33455C902F97A1A4001CA394 /* GCProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCProfileViewController.m; sourceTree = "<group>"; };
+		33455C912F97A1A4001CA394 /* GCProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCProfileViewController.xib; sourceTree = "<group>"; };
+		337F0B342F92EF6A00AA3ABF /* GCLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLoginManager.h; sourceTree = "<group>"; };
+		337F0B352F92EF6A00AA3ABF /* GCLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCLoginManager.m; sourceTree = "<group>"; };
+		33A8B7A72F9063630070D933 /* GCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHomeViewController.h; sourceTree = "<group>"; };
+		33A8B7A82F9063630070D933 /* GCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHomeViewController.m; sourceTree = "<group>"; };
+		33A8B7A92F9063630070D933 /* GCHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCHomeViewController.xib; sourceTree = "<group>"; };
+		33A8B7AE2F9072840070D933 /* GCDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDataFetcher.h; sourceTree = "<group>"; };
+		33A8B7AF2F9072840070D933 /* GCDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDataFetcher.m; sourceTree = "<group>"; };
+		33A8B7B22F9073F80070D933 /* GCSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCSettingsManager.h; sourceTree = "<group>"; };
+		33A8B7B32F9073F80070D933 /* GCSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCSettingsManager.m; sourceTree = "<group>"; };
+		33A8B7B72F9108680070D933 /* GCDataProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDataProcessor.h; sourceTree = "<group>"; };
+		33A8B7B82F9108680070D933 /* GCDataProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDataProcessor.m; sourceTree = "<group>"; };
+		33A8B7BA2F9108E80070D933 /* GCCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCourse.h; sourceTree = "<group>"; };
+		33A8B7BB2F9108E80070D933 /* GCCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCourse.m; sourceTree = "<group>"; };
+		33A8B7BD2F9108E80070D933 /* GCUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCUserProfile.h; sourceTree = "<group>"; };
+		33A8B7BE2F9108E80070D933 /* GCUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCUserProfile.m; sourceTree = "<group>"; };
+		33A8B7C12F9109FA0070D933 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		33AFE3AE2F7B7317006BA041 /* Classroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Classroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AFE3B12F7B7317006BA041 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		33AFE3B42F7B7317006BA041 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -115,6 +147,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33455C8B2F97A03A001CA394 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				33455C8F2F97A1A4001CA394 /* GCProfileViewController.h */,
+				33455C902F97A1A4001CA394 /* GCProfileViewController.m */,
+				33455C912F97A1A4001CA394 /* GCProfileViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		337F0B332F92EF1900AA3ABF /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				337F0B342F92EF6A00AA3ABF /* GCLoginManager.h */,
+				337F0B352F92EF6A00AA3ABF /* GCLoginManager.m */,
+			);
+			name = LoginManager;
+			sourceTree = "<group>";
+		};
+		33A8B7A62F90634C0070D933 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				33A8B7A72F9063630070D933 /* GCHomeViewController.h */,
+				33A8B7A82F9063630070D933 /* GCHomeViewController.m */,
+				33A8B7A92F9063630070D933 /* GCHomeViewController.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		33A8B7AC2F90703C0070D933 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				332A06C02F90450800AE2FD6 /* GCMainWindow.h */,
+				332A06C12F90450800AE2FD6 /* GCMainWindow.m */,
+				33AFE3C62F7B7317006BA041 /* MainMenu.xib */,
+				33A8B7A62F90634C0070D933 /* Home */,
+				33455C8B2F97A03A001CA394 /* Profile */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		33A8B7AD2F9071D50070D933 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				337F0B332F92EF1900AA3ABF /* LoginManager */,
+				33A8B7B62F9108530070D933 /* Processor */,
+				33A8B7B12F9073E90070D933 /* Settings */,
+				33A8B7B52F91084D0070D933 /* Fetcher */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		33A8B7B12F9073E90070D933 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				33A8B7B22F9073F80070D933 /* GCSettingsManager.h */,
+				33A8B7B32F9073F80070D933 /* GCSettingsManager.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		33A8B7B52F91084D0070D933 /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				33A8B7AE2F9072840070D933 /* GCDataFetcher.h */,
+				33A8B7AF2F9072840070D933 /* GCDataFetcher.m */,
+			);
+			name = Fetcher;
+			sourceTree = "<group>";
+		};
+		33A8B7B62F9108530070D933 /* Processor */ = {
+			isa = PBXGroup;
+			children = (
+				33A8B7B72F9108680070D933 /* GCDataProcessor.h */,
+				33A8B7B82F9108680070D933 /* GCDataProcessor.m */,
+			);
+			name = Processor;
+			sourceTree = "<group>";
+		};
+		33A8B7C02F9109D50070D933 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				33A8B7BD2F9108E80070D933 /* GCUserProfile.h */,
+				33A8B7BE2F9108E80070D933 /* GCUserProfile.m */,
+				33A8B7BA2F9108E80070D933 /* GCCourse.h */,
+				33A8B7BB2F9108E80070D933 /* GCCourse.m */,
+				33A8B7C12F9109FA0070D933 /* Models.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		33AFE3A52F7B7317006BA041 = {
 			isa = PBXGroup;
 			children = (
@@ -163,9 +286,11 @@
 		33AFE3B72F7B7317006BA041 /* Classroom */ = {
 			isa = PBXGroup;
 			children = (
+				33A8B7C02F9109D50070D933 /* Models */,
+				33A8B7AD2F9071D50070D933 /* Data */,
+				33A8B7AC2F90703C0070D933 /* UI */,
 				33AFE3C32F7B7317006BA041 /* GCAppDelegate.h */,
 				33AFE3C42F7B7317006BA041 /* GCAppDelegate.m */,
-				33AFE3C62F7B7317006BA041 /* MainMenu.xib */,
 				33AFE3CC2F7B7317006BA041 /* Images.xcassets */,
 				33AFE3C92F7B7317006BA041 /* Classroom.xcdatamodeld */,
 				33AFE3B82F7B7317006BA041 /* Supporting Files */,
@@ -322,7 +447,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33455C932F97A1A5001CA394 /* GCProfileViewController.xib in Resources */,
 				33AFE3BC2F7B7317006BA041 /* InfoPlist.strings in Resources */,
+				33A8B7AB2F9063630070D933 /* GCHomeViewController.xib in Resources */,
 				33AFE3E72F7B7318006BA041 /* ClassroomImporter.mdimporter in Resources */,
 				33AFE3CD2F7B7317006BA041 /* Images.xcassets in Resources */,
 				33AFE3C22F7B7317006BA041 /* Credits.rtf in Resources */,
@@ -353,9 +480,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A8B7B92F9108680070D933 /* GCDataProcessor.m in Sources */,
+				332A06C22F90450800AE2FD6 /* GCMainWindow.m in Sources */,
+				33455C922F97A1A4001CA394 /* GCProfileViewController.m in Sources */,
+				33A8B7B02F9072840070D933 /* GCDataFetcher.m in Sources */,
 				33AFE3C52F7B7317006BA041 /* GCAppDelegate.m in Sources */,
 				33AFE3CB2F7B7317006BA041 /* Classroom.xcdatamodeld in Sources */,
+				33A8B7BC2F9108E80070D933 /* GCCourse.m in Sources */,
+				33A8B7AA2F9063630070D933 /* GCHomeViewController.m in Sources */,
 				33AFE3BE2F7B7317006BA041 /* main.m in Sources */,
+				33A8B7BF2F9108E80070D933 /* GCUserProfile.m in Sources */,
+				33A8B7B42F9073F80070D933 /* GCSettingsManager.m in Sources */,
+				337F0B362F92EF6A00AA3ABF /* GCLoginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +763,7 @@
 				33AFE4032F7B7318006BA041 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		33AFE4042F7B7318006BA041 /* Build configuration list for PBXNativeTarget "Classroom" */ = {
 			isa = XCConfigurationList;
@@ -635,6 +772,7 @@
 				33AFE4062F7B7318006BA041 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		33AFE4072F7B7318006BA041 /* Build configuration list for PBXNativeTarget "ClassroomTests" */ = {
 			isa = XCConfigurationList;
@@ -643,6 +781,7 @@
 				33AFE4092F7B7318006BA041 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

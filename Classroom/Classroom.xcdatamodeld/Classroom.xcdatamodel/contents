@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="untitled.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13F1911" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="GCCourse" representedClassName="GCCourse" syncable="YES">
+        <attribute name="alternateLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="calendarId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseDescriptionHeading" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseGroupEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="enrollmentCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guardiansEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teacherFolder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teacherGroupEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCUserProfile" inverseName="ownedCourses" inverseEntity="GCUserProfile" syncable="YES"/>
+    </entity>
+    <entity name="GCUserProfile" representedClassName="GCUserProfile" syncable="YES">
+        <attribute name="emailAddress" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="familyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="givenName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="me" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verifiedTeacher" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ownedCourses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCCourse" inverseName="owner" inverseEntity="GCCourse" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GCCourse" positionX="-4176" positionY="-349" width="128" height="313"/>
+        <element name="GCUserProfile" positionX="-3989" positionY="-307" width="128" height="178"/>
+    </elements>
 </model>

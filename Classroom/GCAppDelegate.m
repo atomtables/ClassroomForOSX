@@ -7,6 +7,7 @@
 //
 
 #import "GCAppDelegate.h"
+#import "GCLoginManager.h"
 
 @implementation GCAppDelegate
 
@@ -14,9 +15,13 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    [[GCLoginManager main] checkAuthenticationState];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "dev.atomtables.Classroom" in the user's Application Support directory.
@@ -80,14 +85,25 @@
             return nil;
         }
     }
-    
+#ifdef DEBUG
+    // In DEBUG mode, use an in-memory store.
+    // It requires no URL (nil) and vanishes when the app quits.
+    NSString *storeType = NSInMemoryStoreType;
+    NSURL *url = nil;
+    NSLog(@"[DEBUG] Core Data is using an IN-MEMORY store. Data will not be saved.");
+#else
+    // In RELEASE mode, use the standard persistent XML store on disk.
+    NSString *storeType = NSSQLiteStoreType;
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"Classroom.storedata"];
+#endif
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
+    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:url options:nil error:&error]) {
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }
     _persistentStoreCoordinator = coordinator;
+    
+
     
     return _persistentStoreCoordinator;
 }
