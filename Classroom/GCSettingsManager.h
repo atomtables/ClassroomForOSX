@@ -13,5 +13,7 @@
 + (instancetype)sharedSettings;
 
 @property (nonatomic) NSString* classroomApiUrl;
+@property (nonatomic) NSString* clientId;
+@property (nonatomic) NSString* clientSecret;
 
 @end

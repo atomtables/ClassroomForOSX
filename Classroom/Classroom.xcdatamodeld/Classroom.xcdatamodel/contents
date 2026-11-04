@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13F1911" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F1911" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="GCAnnouncement" representedClassName="GCAnnouncement" syncable="YES">
+        <attribute name="alternateLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assigneeMode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="individualStudentsOptions" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="materials" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="scheduledTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="GCCourse" inverseName="announcements" inverseEntity="GCCourse" syncable="YES"/>
+        <relationship name="creatorUser" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="GCUserProfile" syncable="YES"/>
+    </entity>
     <entity name="GCCourse" representedClassName="GCCourse" syncable="YES">
         <attribute name="alternateLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="calendarId" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,7 +25,7 @@
         <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="enrollmentCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="guardiansEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +33,9 @@
         <attribute name="teacherFolder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teacherGroupEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCUserProfile" inverseName="ownedCourses" inverseEntity="GCUserProfile" syncable="YES"/>
+        <attribute name="userSelectedPosition" optional="YES" attributeType="Integer 32" minValueString="-1" defaultValueString="-1" syncable="YES"/>
+        <relationship name="announcements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GCAnnouncement" inverseName="course" inverseEntity="GCAnnouncement" syncable="YES"/>
+        <relationship name="teacher" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCUserProfile" inverseName="teachingCourses" inverseEntity="GCUserProfile" syncable="YES"/>
     </entity>
     <entity name="GCUserProfile" representedClassName="GCUserProfile" syncable="YES">
         <attribute name="emailAddress" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -28,11 +45,12 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="me" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="verifiedTeacher" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ownedCourses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCCourse" inverseName="owner" inverseEntity="GCCourse" syncable="YES"/>
+        <attribute name="verifiedTeacher" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="teachingCourses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCCourse" inverseName="teacher" inverseEntity="GCCourse" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GCCourse" positionX="-4176" positionY="-349" width="128" height="313"/>
+        <element name="GCAnnouncement" positionX="-3800" positionY="-297" width="128" height="238"/>
+        <element name="GCCourse" positionX="-4176" positionY="-349" width="128" height="345"/>
         <element name="GCUserProfile" positionX="-3989" positionY="-307" width="128" height="178"/>
     </elements>
 </model>

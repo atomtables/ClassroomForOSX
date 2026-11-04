@@ -8,15 +8,12 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import "GCLoginManager.h"
+#import "GCSettingsManager.h"
 #import "GCUserProfile.h"
 
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
-
-NSString* clientID = @""; // Your Client ID
-NSString* clientSecret = @""; // Your Client secret
-
 
 @interface GCLoginManager ()
 
@@ -28,13 +25,14 @@ NSString* clientSecret = @""; // Your Client secret
 // 1 on success, 0 on unknown, -1 on failure (ratio test much??? jkjk)
 @property (nonatomic, readwrite) int success;
 @property (nonatomic, readwrite) BOOL isAuthenticated;
+@property (nonatomic, readwrite) BOOL isLoggedIn;
 
 @property (nonatomic) NSDate* expiry;
 @property (nonatomic, strong) NSTimer *refreshTimer;
 
 @property (nonatomic) int serverPort;
 @property (nonatomic) int serverSocket;
-@property (nonatomic, strong) dispatch_source_t listeningSource;
+@property (nonatomic) dispatch_source_t listeningSource;
 
 @end
 
@@ -110,7 +108,7 @@ NSString* clientSecret = @""; // Your Client secret
     
     NSURL* redirectUri = [NSURL URLWithString:[NSString stringWithFormat:
                              @"https://accounts.google.com/o/oauth2/v2/auth?client_id=%@&redirect_uri=%@&response_type=code&scope=%@&code_challenge=%@&code_challenge_method=S256",
-                             [clientID stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]],
+                             [[[GCSettingsManager sharedSettings] clientId] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]],
                              [[NSString stringWithFormat:@"http://localhost:%d/oauthredirect", self.serverPort] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]],
                              scope,
                              [self generateCodeChallenge]
@@ -118,7 +116,6 @@ NSString* clientSecret = @""; // Your Client secret
     
     [[NSWorkspace sharedWorkspace] openURL:redirectUri];
 }
-
 - (void)listenForRedirectUri:(NSString*)uri {
     [self updateStateWithStep:2 success:0 status:@"redirect URI"];
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
@@ -135,7 +132,6 @@ NSString* clientSecret = @""; // Your Client secret
         }
     }
 }
-
 - (void)actualAuthentication:(NSString*)code {
     [self updateStateWithStep:3 success:0 status:@"Exchanging code with Google..."];
     NSLog(@"now within auth point");
@@ -147,7 +143,7 @@ NSString* clientSecret = @""; // Your Client secret
                           "code_verifier=%@&"
                           "grant_type=authorization_code&"
                           "redirect_uri=%@",
-                          code/*[ stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]*/, [clientID stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [clientSecret stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [codeChallenge stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [[NSString stringWithFormat:@"http://localhost:%d/oauthredirect", self.serverPort] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+                          code/*[ stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]*/, [[[GCSettingsManager sharedSettings] clientId] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [[[GCSettingsManager sharedSettings] clientSecret] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [codeChallenge stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [[NSString stringWithFormat:@"http://localhost:%d/oauthredirect", self.serverPort] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
     
     [req setHTTPBody:[mainBody dataUsingEncoding:NSUTF8StringEncoding]];
     [req setHTTPMethod:@"POST"];
@@ -164,7 +160,6 @@ NSString* clientSecret = @""; // Your Client secret
                                   }];
     [task resume];
 }
-
 - (void)handleTokenNetworkResponseWithData:(NSData *)data error:(NSError *)err isRefresh:(BOOL)isRefresh {
     if (err) {
         [self updateStateWithStep:0 success:-1 status:[NSString stringWithFormat:@"Network request failed: %@", err.localizedDescription]];
@@ -220,11 +215,11 @@ NSString* clientSecret = @""; // Your Client secret
     
     if (dict[@"refresh_token"]) {
         [self saveKeychainItem:@"refresh_token" value:dict[@"refresh_token"] genericInfo:nil];
-        self.isAuthenticated = YES;
     }
     
     [self scheduleTokenRefresh];
-    [self updateStateWithStep:4 success:1 status:@"Successfully authenticated."];
+    [self updateStateWithStep:0 success:1 status:@"Successfully authenticated."];
+    self.isAuthenticated = YES;
 }
 
 - (NSString*)accountOwner {
@@ -245,24 +240,20 @@ NSString* clientSecret = @""; // Your Client secret
 }
 
 - (void)refreshTheAccessCode {
-    if (!self.isAuthenticated) return;
-    
     [self updateStateWithStep:3 success:0 status:@"Refreshing tokens..."];
     NSMutableURLRequest* req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://oauth2.googleapis.com/token"]];
     
-    NSString* mainBody = [NSString stringWithFormat:@"client_id=%@&grant_type=refresh_token&refresh_token=%@", clientID, [self refreshCode]];
+    NSString* mainBody = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=refresh_token&refresh_token=%@", [[[GCSettingsManager sharedSettings] clientId] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [[[GCSettingsManager sharedSettings] clientSecret] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]], [self refreshCode]];
     [req setHTTPBody:[mainBody dataUsingEncoding:NSUTF8StringEncoding]];
     [req setHTTPMethod:@"POST"];
     [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session
-                                  dataTaskWithRequest:req
-                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      NSLog(@"made connection TO REFRESH, continuing!!!");
-                                      [self handleTokenNetworkResponseWithData:data error:error isRefresh:YES];
-                                  }];
-    [task resume];
+    NSLog(@"refresh token: %@", self.refreshCode);
+    
+    [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSLog(@"made connection TO REFRESH, continuing!!!");
+        [self handleTokenNetworkResponseWithData:data error:error isRefresh:YES];
+    }];
 }
 
 - (NSString*)refreshCode {
@@ -285,7 +276,6 @@ NSString* clientSecret = @""; // Your Client secret
     NSString* string = [[NSString alloc] initWithData:(__bridge_transfer NSData *)resultData encoding:NSUTF8StringEncoding];
     return string;
 }
-
 - (void)saveKeychainItem:(NSString *)service value:(NSString *)value genericInfo:(NSDictionary *)genericInfo {
     if (!self.accountOwner) return;
     
@@ -308,10 +298,12 @@ NSString* clientSecret = @""; // Your Client secret
     
     OSStatus stat = SecItemAdd((__bridge CFDictionaryRef)newItem, NULL);
     if (stat != errSecSuccess) {
+        if (stat == errSecDuplicateItem) {
+            stat = SecItemUpdate((__bridge CFDictionaryRef)(query), (__bridge CFDictionaryRef)(newItem));
+        }
         NSLog(@"[GCLoginManager] Error adding to keychain for %@: %d", service, (int)stat);
     }
 }
-
 // Updates properties on the main thread so UI elements observing them don't crash
 - (void)updateStateWithStep:(int)step success:(int)success status:(NSString *)status {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -320,7 +312,6 @@ NSString* clientSecret = @""; // Your Client secret
         self.step = step;
     });
 }
-
 - (void)scheduleTokenRefresh {
     if (self.refreshTimer) {
         [self.refreshTimer invalidate];
@@ -346,7 +337,6 @@ NSString* clientSecret = @""; // Your Client secret
         });
     }
 }
-
 - (void)checkAuthenticationState {
     [self updateStateWithStep:5 success:0 status:@"Restoring session..."];
     
@@ -357,8 +347,6 @@ NSString* clientSecret = @""; // Your Client secret
         [self updateStateWithStep:0 success:0 status:@"Not authenticated. Waiting for user."];
         return;
     }
-    
-    self.isAuthenticated = YES;
     
     NSDictionary *query = @{
                             (__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
@@ -374,8 +362,6 @@ NSString* clientSecret = @""; // Your Client secret
     
     if (status == errSecSuccess) {
         NSDictionary *result = (__bridge_transfer NSDictionary *)resultDict;
-        NSData *tokenData = result[(__bridge id)kSecValueData];
-        self.accessCode = [[NSString alloc] initWithData:tokenData encoding:NSUTF8StringEncoding];
         
         NSData *genericData = result[(__bridge id)kSecAttrGeneric];
         if (genericData) {
@@ -386,15 +372,26 @@ NSString* clientSecret = @""; // Your Client secret
             NSString *scopesStr = genericDict[@"scopes"];
             self.authorisedScopes = [scopesStr componentsSeparatedByString:@" "];
         }
+        
+        if ([self.expiry timeIntervalSinceNow] > 60) {
+            NSData *tokenData = result[(__bridge id)kSecValueData];
+            self.accessCode = [[NSString alloc] initWithData:tokenData encoding:NSUTF8StringEncoding];
+        } else {
+            NSLog(@"access token expired, refreshing immediately");
+            self.accessCode = nil;
+        }
+        
         [self scheduleTokenRefresh];
         [self updateStateWithStep:4 success:1 status:@"Session restored."];
     } else {
         // We have a refresh token, but no access token. Refresh it immediately.
         [self refreshTheAccessCode];
     }
+    
+    if (self.accessCode) self.isAuthenticated = YES;
 }
 
-#pragma MARK: web server to handle redirect
+#pragma mark - web server to handle redirect
 
 - (void)startListeningWithCompletion:(void (^)(NSString *code))completion andError:(NSError**)error {
     [self stopListening]; // Ensure no previous server is running
@@ -485,7 +482,6 @@ NSString* clientSecret = @""; // Your Client secret
     dispatch_resume(self.listeningSource);
     NSLog(@"waiting for oauth to hit the redirect");
 }
-
 - (void)stopListening {
     if (self.listeningSource) {
         dispatch_source_cancel(self.listeningSource);
@@ -496,12 +492,10 @@ NSString* clientSecret = @""; // Your Client secret
         self.serverSocket = 0;
     }
 }
-
 - (void)stopAuthFlow {
     [self stopListening];
     [self updateStateWithStep:0 success:-1 status:@"stopped"];
 }
-
 - (void)reset {
     [self updateStateWithStep:0 success:0 status:@"Waiting for authentication to occur again..."];
     self.step = 0;
@@ -509,7 +503,6 @@ NSString* clientSecret = @""; // Your Client secret
     self.status = @"Waiting for authentication to occur again...";
     NSLog(@"reset");
 }
-
 - (NSDictionary *)decodeGoogleIDToken:(NSString *)idToken {
     NSArray *segments = [idToken componentsSeparatedByString:@"."];
     

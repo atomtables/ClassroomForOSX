@@ -2,7 +2,7 @@
 //  GCUserProfile.m
 //  Classroom
 //
-//  Created by Adithiya Venkatakrishnan on 16/04/2026.
+//  Created by Adithiya Venkatakrishnan on 17/10/2026.
 //  Copyright (c) 2026 atomtables. All rights reserved.
 //
 
@@ -12,14 +12,14 @@
 
 @implementation GCUserProfile
 
-@dynamic id;
-@dynamic givenName;
+@dynamic emailAddress;
 @dynamic familyName;
 @dynamic fullName;
-@dynamic emailAddress;
+@dynamic givenName;
+@dynamic id;
+@dynamic me;
 @dynamic photoUrl;
 @dynamic verifiedTeacher;
-@dynamic me;
-@dynamic ownedCourses;
+@dynamic teachingCourses;
 
 @end

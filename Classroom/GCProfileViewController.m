@@ -8,6 +8,7 @@
 
 #import "GCProfileViewController.h"
 #import "GCLoginManager.h"
+#import "GCImageCache.h"
 
 @interface GCProfileViewController ()
 
@@ -17,6 +18,7 @@
 
 @implementation GCProfileViewController {
     BOOL bindedToStep;
+    BOOL inited;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,12 +35,16 @@
 
 - (void)loadView {
     [super loadView];
-    
-    [self updateUIWithAuthenticationState:@{}];
+    if (!inited) {[self updateUIWithAuthenticationState:@{}];};
+    inited = true;
 }
 
 - (void)dealloc {
     [[GCLoginManager main] removeObserver:self forKeyPath:@"isAuthenticated"];
+    if (bindedToStep) {
+        [[GCLoginManager main] removeObserver:self forKeyPath:@"step"];
+        bindedToStep = NO;
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -50,7 +56,6 @@
         if ([keyPath isEqualToString:@"isAuthenticated"]) [self updateUIWithAuthenticationState:change];
         if ([keyPath isEqualToString:@"step"]) [self updateSheetUI];
     } else {
-        // REQUIRED FIX: Allow modern NSViewController to handle its internal view/layout KVO.
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -68,23 +73,13 @@
             [self.logInOutButton setTitle:@"Log Out"];
             [self.name setStringValue:[[GCLoginManager main] account][@"name"] ?: @"Unknown"];
             [self.email setStringValue:[[GCLoginManager main] account][@"email"] ?: @"Unknown again"];
-            NSURLSessionTask* task = [[NSURLSession sharedSession] dataTaskWithURL:[[NSURL alloc] initWithString:[[GCLoginManager main] account][@"picture"] ?: @"http://255.255.255.0:5555"] completionHandler:^(NSData* data, NSURLResponse* _, NSError* err) {
-                NSLog(@"resp: %@, err: %@", _, err);
-                if (err) {
-                    NSLog(@"error loading image: %@", err);
-                    [self.pfp setImage:[NSImage imageNamed:NSImageNameCaution]];
-                    return;
-                }
-                if (data) {
-                    NSImage* image = [[NSImage alloc] initWithData:data];
-                    if (image) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.pfp setImage:image];
-                        });
-                    }
+            [GCImageCache loadImageFromURL:[NSURL URLWithString:[[GCLoginManager main] account][@"picture"]] completion:^(NSImage* img, NSError* err){
+                if (err || !img) {
+                    self.pfp.image = [NSImage imageNamed:NSImageNameCaution];
+                } else {
+                    self.pfp.image = img;
                 }
             }];
-            [task resume];
         }
     });
 }

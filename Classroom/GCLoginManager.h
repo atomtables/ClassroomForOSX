@@ -31,6 +31,7 @@
 @property (nonatomic) NSArray* authorisedScopes;
 // this is if the user is even authenticated.
 @property (nonatomic, readonly) BOOL isAuthenticated;
+@property (nonatomic, readonly) BOOL isLoggedIn;
 
 - (void)runRedirectUri;
 - (void)checkAuthenticationState;

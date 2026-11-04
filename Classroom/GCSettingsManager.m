@@ -16,11 +16,10 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
-    
-    sharedInstance.classroomApiUrl = @"https://classroom.googleapis.com";
+#error SET THE BLOODY API KEY
+
     
     return sharedInstance;
 }
-
 
 @end

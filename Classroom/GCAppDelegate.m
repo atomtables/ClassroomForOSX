@@ -8,6 +8,7 @@
 
 #import "GCAppDelegate.h"
 #import "GCLoginManager.h"
+#import "GCDataManager.h"
 
 @implementation GCAppDelegate
 
@@ -21,7 +22,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    
+
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "dev.atomtables.Classroom" in the user's Application Support directory.
@@ -43,6 +44,7 @@
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
+
 
 // Returns the persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.)
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
@@ -85,7 +87,7 @@
             return nil;
         }
     }
-#ifdef DEBUG
+#ifndef DEBUG
     // In DEBUG mode, use an in-memory store.
     // It requires no URL (nil) and vanishes when the app quits.
     NSString *storeType = NSInMemoryStoreType;

@@ -13,3 +13,9 @@
 @property (weak) IBOutlet NSTableView* table;
 
 @end
+
+@interface GCCourseTableCellView: NSTableCellView
+
+@property (weak) IBOutlet NSTextField* information;
+
+@end

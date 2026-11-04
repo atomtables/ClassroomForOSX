@@ -2,32 +2,35 @@
 //  GCCourse.m
 //  Classroom
 //
-//  Created by Adithiya Venkatakrishnan on 16/04/2026.
+//  Created by Adithiya Venkatakrishnan on 17/10/2026.
 //  Copyright (c) 2026 atomtables. All rights reserved.
 //
 
 #import "GCCourse.h"
+#import "GCUserProfile.h"
 
 
 @implementation GCCourse
 
+@dynamic alternateLink;
+@dynamic calendarId;
+@dynamic courseDescription;
+@dynamic courseDescriptionHeading;
+@dynamic courseGroupEmail;
+@dynamic courseState;
+@dynamic creationTime;
+@dynamic enrollmentCode;
+@dynamic guardiansEnabled;
 @dynamic id;
 @dynamic name;
-@dynamic section;
-@dynamic courseDescriptionHeading;
-@dynamic courseDescription;
 @dynamic room;
-@dynamic creationTime;
-@dynamic updateTime;
-@dynamic enrollmentCode;
-@dynamic courseState;
-@dynamic alternateLink;
-@dynamic teacherGroupEmail;
-@dynamic courseGroupEmail;
-@dynamic teacherFolder;
-@dynamic guardiansEnabled;
-@dynamic calendarId;
+@dynamic section;
 @dynamic subject;
-@dynamic owner;
+@dynamic teacherFolder;
+@dynamic teacherGroupEmail;
+@dynamic updateTime;
+@dynamic userSelectedPosition;
+@dynamic announcements;
+@dynamic teacher;
 
 @end
