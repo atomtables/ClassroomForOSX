@@ -19,6 +19,5 @@
 
 + (instancetype)shared;
 - (id)init NS_UNAVAILABLE;
-- (void)coursesWereUpdated;
 
 @end

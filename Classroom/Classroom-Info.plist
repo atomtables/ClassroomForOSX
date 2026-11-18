@@ -4,7 +4,10 @@
 <dict>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict/>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.googleusercontent.apps.292232223881-sg8dqhm6s3jp2p3td0ii5q7v9kl738o9</string>
+		</dict>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

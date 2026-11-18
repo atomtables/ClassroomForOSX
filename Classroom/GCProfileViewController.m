@@ -61,7 +61,6 @@
 }
 
 - (void)updateUIWithAuthenticationState:(NSDictionary *)change {
-    NSLog(@"%@ %ld", change, (long)[change[NSKeyValueChangeNewKey] boolValue]);
     BOOL authenticated = change[NSKeyValueChangeNewKey] ? [change[NSKeyValueChangeNewKey] boolValue] : [[GCLoginManager main] isAuthenticated];
     
     dispatch_async(dispatch_get_main_queue(), ^{

@@ -11,16 +11,18 @@
 
 @interface GCDataFetcher : NSObject
 
-//+ (instancetype)main;
++ (instancetype)main;
+- (BOOL)retrieveRequiredValuesFromScrapedGoogleClassroomPage;
 
 #pragma mark - requires scope classroom.courses.readonly
 // https://classroom.googleapis.com/v1/courses/{idStr}
 - (OSStatus)getCourseWithId:(NSString*)idStr withCompletionHandler:(void (^)(GCCourse* course, NSError*))comp;
 // https://classroom.googleapis.com/v1/courses
-+ (BOOL)listCourses:(void (^)(NSArray* courses, NSError*))comp;
-+ (BOOL)listTeachersInCourse:(NSString*)courseId completion:(void (^)(NSArray* teachers, NSError*))comp;
-+ (BOOL)listAnnouncementsInCourse:(NSString*)courseId completion:(void (^)(NSArray* announcements, NSError*))comp;
-+ (BOOL)getUserProfile:(NSString*)userId completion:(void (^)(NSDictionary* profile, NSError*))comp;
+- (BOOL)listCourses:(void (^)(NSArray* courses, NSError*))comp;
+- (BOOL)listTeachersInCourse:(NSString*)courseId completion:(void (^)(NSArray* teachers, NSError*))comp;
+- (BOOL)listAllAnnouncementsInCourse:(NSString *)courseId completion:(void (^)(NSArray *, NSError *))comp;
+- (BOOL)getUserProfile:(NSString*)userId completion:(void (^)(NSArray* profileData, NSError*))comp;
+- (BOOL)getUserProfiles:(NSArray*)userIds completion:(void (^)(NSArray* profileData, NSError*))comp;
 // - (OSStatus)getCourseGradingPeriodSettingsWithId:(NSString*)idStr withCompletionHandler:(void (^)(NSError*, NSURLResponse*))comp;
 
 #pragma mark - requires scope classroom.courses

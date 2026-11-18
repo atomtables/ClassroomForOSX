@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "GCUserProfile.h"
 
+extern NSString* cookies();
+
 @interface GCLoginManager : NSObject
 
 + (instancetype)main;

@@ -2,28 +2,40 @@
 //  GCCourse.h
 //  Classroom
 //
-//  Created by Adithiya Venkatakrishnan on 17/10/2026.
+//  Created by Adithiya Venkatakrishnan on 15/11/2026.
 //  Copyright (c) 2026 atomtables. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class GCUserProfile;
+@class GCMaterial, GCUserProfile;
 
 @interface GCCourse : NSManagedObject
 
 @property (nonatomic, retain) NSString * alternateLink;
+@property (nonatomic, retain) NSString * banner;
 @property (nonatomic, retain) NSString * calendarId;
+@property (nonatomic, retain) NSNumber * classRole;
+@property (nonatomic, retain) NSString * colorBackground;
+@property (nonatomic, retain) NSString * colorFavicon;
+@property (nonatomic, retain) NSString * colorForeground;
+@property (nonatomic, retain) NSString * colorPrimary;
+@property (nonatomic, retain) NSNumber * colorShouldAdjustContrast;
 @property (nonatomic, retain) NSString * courseDescription;
 @property (nonatomic, retain) NSString * courseDescriptionHeading;
 @property (nonatomic, retain) NSString * courseGroupEmail;
-@property (nonatomic, retain) NSString * courseState;
+@property (nonatomic, retain) NSNumber * courseState;
 @property (nonatomic, retain) NSDate * creationTime;
 @property (nonatomic, retain) NSString * enrollmentCode;
 @property (nonatomic, retain) NSNumber * guardiansEnabled;
 @property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSString * levels;
+@property (nonatomic, retain) NSString * meetLink;
+@property (nonatomic, retain) NSNumber * meetRole;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * orderToken;
+@property (nonatomic, retain) NSNumber * orderTokenSortable;
 @property (nonatomic, retain) NSString * room;
 @property (nonatomic, retain) NSString * section;
 @property (nonatomic, retain) NSString * subject;
@@ -32,7 +44,9 @@
 @property (nonatomic, retain) NSDate * updateTime;
 @property (nonatomic, retain) NSNumber * userSelectedPosition;
 @property (nonatomic, retain) NSOrderedSet *announcements;
+@property (nonatomic, retain) NSSet *students;
 @property (nonatomic, retain) NSSet *teacher;
+@property (nonatomic, retain) GCMaterial *materials;
 @end
 
 @interface GCCourse (CoreDataGeneratedAccessors)
@@ -47,6 +61,11 @@
 - (void)removeAnnouncementsObject:(NSManagedObject *)value;
 - (void)addAnnouncements:(NSOrderedSet *)values;
 - (void)removeAnnouncements:(NSOrderedSet *)values;
+- (void)addStudentsObject:(GCUserProfile *)value;
+- (void)removeStudentsObject:(GCUserProfile *)value;
+- (void)addStudents:(NSSet *)values;
+- (void)removeStudents:(NSSet *)values;
+
 - (void)addTeacherObject:(GCUserProfile *)value;
 - (void)removeTeacherObject:(GCUserProfile *)value;
 - (void)addTeacher:(NSSet *)values;

@@ -9,11 +9,16 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "GCLoginManager.h"
 #import "GCSettingsManager.h"
+#import "GCDataFetcher.h"
 #import "GCUserProfile.h"
 
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
+
+NSString* cookies() {
+#error Put an insecure string of your cookies here.
+}
 
 @interface GCLoginManager ()
 
@@ -40,6 +45,8 @@
     NSString* codeChallenge;
     NSString* accountOwnerOld;
     NSDictionary* accountOld;
+    NSTimer* timer;
+    dispatch_queue_t bsQueue;
 }
 
 + (instancetype)main {
@@ -51,6 +58,17 @@
         sharedInstance.success = 0;
     });
     return sharedInstance;
+}
+
+- (id)init {
+    self = [super init];
+    self->bsQueue = dispatch_queue_create("dev.atomtables.Classroom.bsQueue", DISPATCH_QUEUE_CONCURRENT);
+    return self;
+}
+
+// claude did NOT write this masterpiece of a function
+- (void)dealloc {
+    abort();
 }
 
 - (NSString*)generateCodeChallenge {
@@ -191,18 +209,14 @@
     self.accessCode = dict[@"access_token"];
     NSTimeInterval expiresIn = [dict[@"expires_in"] doubleValue];
     self.expiry = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
-    NSLog(@"access code is %@ and expires in %@", self.accessCode, self.expiry);
+    NSLog(@"access code valid, and expires in %@", self.expiry);
     
     if (!isRefresh || (dict[@"id_token"] && !self.accountOwner)) {
         self.accountOwner = dict[@"id_token"];
     }
     
-    NSLog(@"%@, %@", dict[@"id_token"], self.accountOwner);
-    
     NSString *scopesStr = dict[@"scope"] ?: @"";
     self.authorisedScopes = [scopesStr componentsSeparatedByString:@" "];
-    
-    NSLog(@"scopes are %@", scopesStr);
     
     NSDictionary *genericInfo = @{
                                   @"expires_at": @([self.expiry timeIntervalSince1970]),
@@ -219,7 +233,7 @@
     
     [self scheduleTokenRefresh];
     [self updateStateWithStep:0 success:1 status:@"Successfully authenticated."];
-    self.isAuthenticated = YES;
+    self.isAuthenticated = [[GCDataFetcher main] retrieveRequiredValuesFromScrapedGoogleClassroomPage];
 }
 
 - (NSString*)accountOwner {
@@ -248,7 +262,7 @@
     [req setHTTPMethod:@"POST"];
     [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
-    NSLog(@"refresh token: %@", self.refreshCode);
+    NSLog(@"refresh token valid");
     
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSLog(@"made connection TO REFRESH, continuing!!!");
@@ -388,7 +402,17 @@
         [self refreshTheAccessCode];
     }
     
-    if (self.accessCode) self.isAuthenticated = YES;
+    if (self.accessCode) {
+        self.isAuthenticated = [[GCDataFetcher main] retrieveRequiredValuesFromScrapedGoogleClassroomPage];
+        timer = [NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(occasionallyUpdateTheClassroomValues) userInfo:nil repeats:true];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    }
+}
+
+- (void)occasionallyUpdateTheClassroomValues {
+    dispatch_async(self->bsQueue, ^{
+        [[GCDataFetcher main] retrieveRequiredValuesFromScrapedGoogleClassroomPage];
+    });
 }
 
 #pragma mark - web server to handle redirect

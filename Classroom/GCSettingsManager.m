@@ -16,8 +16,8 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
-#error SET THE BLOODY API KEY
-
+    
+#error Set the necessary values
     
     return sharedInstance;
 }

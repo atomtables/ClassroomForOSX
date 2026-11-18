@@ -2,7 +2,7 @@
 //  GCUserProfile.h
 //  Classroom
 //
-//  Created by Adithiya Venkatakrishnan on 17/10/2026.
+//  Created by Adithiya Venkatakrishnan on 15/11/2026.
 //  Copyright (c) 2026 atomtables. All rights reserved.
 //
 
@@ -14,13 +14,10 @@
 @interface GCUserProfile : NSManagedObject
 
 @property (nonatomic, retain) NSString * emailAddress;
-@property (nonatomic, retain) NSString * familyName;
-@property (nonatomic, retain) NSString * fullName;
-@property (nonatomic, retain) NSString * givenName;
 @property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSString * me;
+@property (nonatomic, retain) NSNumber * me;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * photoUrl;
-@property (nonatomic, retain) NSNumber * verifiedTeacher;
 @property (nonatomic, retain) NSSet *teachingCourses;
 @end
 

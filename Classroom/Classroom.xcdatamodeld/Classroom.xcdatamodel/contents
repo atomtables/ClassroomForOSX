@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F1911" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="GCAnnouncement" representedClassName="GCAnnouncement" syncable="YES">
-        <attribute name="alternateLink" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="assigneeMode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="courseId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="individualStudentsOptions" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="materials" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="scheduledTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="course" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="GCCourse" inverseName="announcements" inverseEntity="GCCourse" syncable="YES"/>
-        <relationship name="creatorUser" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="GCUserProfile" syncable="YES"/>
+    <entity name="GCAnnouncement" representedClassName="GCAnnouncement" parentEntity="GCPost" syncable="YES">
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCUserProfile" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCCourse" inverseName="announcements" inverseEntity="GCCourse" syncable="YES"/>
     </entity>
     <entity name="GCCourse" representedClassName="GCCourse" syncable="YES">
         <attribute name="alternateLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="banner" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="calendarId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classRole" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="colorBackground" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorFavicon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorForeground" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorPrimary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorShouldAdjustContrast" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="courseDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseDescriptionHeading" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseGroupEmail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="courseState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="courseState" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="enrollmentCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="guardiansEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="levels" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meetLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meetRole" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="orderToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderTokenSortable" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,22 +36,44 @@
         <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userSelectedPosition" optional="YES" attributeType="Integer 32" minValueString="-1" defaultValueString="-1" syncable="YES"/>
         <relationship name="announcements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GCAnnouncement" inverseName="course" inverseEntity="GCAnnouncement" syncable="YES"/>
+        <relationship name="materials" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCMaterial" inverseName="course" inverseEntity="GCMaterial" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCUserProfile" syncable="YES"/>
         <relationship name="teacher" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCUserProfile" inverseName="teachingCourses" inverseEntity="GCUserProfile" syncable="YES"/>
+    </entity>
+    <entity name="GCMaterial" representedClassName="GCMaterial" parentEntity="GCPost" syncable="YES">
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCUserProfile" syncable="YES"/>
+        <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GCCourse" inverseName="materials" inverseEntity="GCCourse" syncable="YES"/>
+    </entity>
+    <entity name="GCPost" representedClassName="GCPost" isAbstract="YES" syncable="YES">
+        <attribute name="apiId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="editTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="integrationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isTargeted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="orderToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plainText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishedStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="richText" optional="YES" attributeType="String" valueTransformerName="" syncable="YES"/>
+        <attribute name="sortingTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="topicId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="GCUserProfile" representedClassName="GCUserProfile" syncable="YES">
         <attribute name="emailAddress" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="familyName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fullName" optional="YES" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <attribute name="givenName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="me" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="me" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="verifiedTeacher" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="teachingCourses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GCCourse" inverseName="teacher" inverseEntity="GCCourse" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GCAnnouncement" positionX="-3800" positionY="-297" width="128" height="238"/>
-        <element name="GCCourse" positionX="-4176" positionY="-349" width="128" height="345"/>
-        <element name="GCUserProfile" positionX="-3989" positionY="-307" width="128" height="178"/>
+        <element name="GCAnnouncement" positionX="-4077" positionY="-189" width="128" height="73"/>
+        <element name="GCCourse" positionX="-4176" positionY="-349" width="128" height="553"/>
+        <element name="GCPost" positionX="-4086" positionY="-198" width="128" height="268"/>
+        <element name="GCUserProfile" positionX="-3989" positionY="-307" width="128" height="133"/>
+        <element name="GCMaterial" positionX="-4086" positionY="-198" width="128" height="73"/>
     </elements>
 </model>

@@ -87,7 +87,7 @@
             return nil;
         }
     }
-#ifndef DEBUG
+#ifdef DEBUG
     // In DEBUG mode, use an in-memory store.
     // It requires no URL (nil) and vanishes when the app quits.
     NSString *storeType = NSInMemoryStoreType;
@@ -126,7 +126,7 @@
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
 
     return _managedObjectContext;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F1911" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1070" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
@@ -61,7 +62,7 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
-                                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="updateTime" ascending="NO"/>
+                                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="sortingTime" ascending="NO"/>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="8BX-It-8HM">
@@ -76,9 +77,10 @@
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                 <connections>
-                                                                                    <binding destination="8BX-It-8HM" name="value" keyPath="objectValue.updateTime" id="1Zd-lf-DQU">
+                                                                                    <binding destination="8BX-It-8HM" name="value" keyPath="objectValue.publishTime" id="mch-TQ-ZGI">
                                                                                         <dictionary key="options">
                                                                                             <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                                                                             <string key="NSNullPlaceholder">...</string>
                                                                                         </dictionary>
                                                                                     </binding>
@@ -109,7 +111,7 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
-                                                            <sortDescriptor key="sortDescriptorPrototype" selector="localizedCaseInsensitiveCompare:" sortKey="creatorUser.fullName"/>
+                                                            <sortDescriptor key="sortDescriptorPrototype" selector="localizedCaseInsensitiveCompare:" sortKey="author.name"/>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="Uc8-bD-3al">
@@ -124,7 +126,7 @@
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="Uc8-bD-3al" name="value" keyPath="objectValue.creatorUser.fullName" id="ZCa-ng-9Re">
+                                                                                <binding destination="Uc8-bD-3al" name="value" keyPath="objectValue.author.name" id="1F9-s7-CU8">
                                                                                     <dictionary key="options">
                                                                                         <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
                                                                                         <string key="NSNullPlaceholder">Unknown</string>
@@ -170,7 +172,7 @@
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="sgC-ky-p28" name="value" keyPath="objectValue.text" id="9xy-6J-chI">
+                                                                                <binding destination="sgC-ky-p28" name="value" keyPath="objectValue.plainText" id="gzv-tv-cmq">
                                                                                     <dictionary key="options">
                                                                                         <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
                                                                                         <string key="NSNullPlaceholder">...</string>
@@ -194,7 +196,7 @@
                                                     </tableColumns>
                                                     <connections>
                                                         <binding destination="xfl-xD-eRa" name="content" keyPath="arrangedObjects" id="gSj-Fx-Umr"/>
-                                                        <binding destination="xfl-xD-eRa" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="gSj-Fx-Umr" id="vB8-PJ-Mth"/>
+                                                        <binding destination="xfl-xD-eRa" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="gSj-Fx-Umr" id="VBn-rA-S8k"/>
                                                     </connections>
                                                 </tableView>
                                             </subviews>
@@ -236,81 +238,73 @@
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
-                <stackView orientation="horizontal" alignment="centerY" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="M7i-3l-d92">
-                    <rect key="frame" x="20" y="373" width="766" height="17"/>
-                    <beginningViews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PJH-Ac-0qn">
-                            <rect key="frame" x="6" y="15" width="38" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="vRR-am-0Cm">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="course.room" id="Jj3-zH-N7t">
-                                    <dictionary key="options">
-                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                        <string key="NSNullPlaceholder">No Room</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZBm-pa-4Mu">
-                            <rect key="frame" x="6" y="15" width="38" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="dcS-u5-iMT">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="course.section" id="vCX-0f-4oQ">
-                                    <dictionary key="options">
-                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                        <string key="NSNullPlaceholder">No Section</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gBV-N8-AIC">
-                            <rect key="frame" x="6" y="15" width="38" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="RmF-gr-y23">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="course.subject" id="8Gs-Yu-bko">
-                                    <dictionary key="options">
-                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                        <string key="NSNullPlaceholder">No Subject</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
-                        </textField>
-                    </beginningViews>
-                    <visibilityPriorities>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                    </visibilityPriorities>
-                    <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                    </customSpacing>
-                </stackView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PJH-Ac-0qn">
+                    <rect key="frame" x="18" y="373" width="38" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="vRR-am-0Cm">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="course.room" id="Jj3-zH-N7t">
+                            <dictionary key="options">
+                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                <string key="NSNullPlaceholder">No Room</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZBm-pa-4Mu">
+                    <rect key="frame" x="60" y="373" width="38" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="dcS-u5-iMT">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="course.section" id="vCX-0f-4oQ">
+                            <dictionary key="options">
+                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                <string key="NSNullPlaceholder">No Section</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gBV-N8-AIC">
+                    <rect key="frame" x="102" y="373" width="38" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="RmF-gr-y23">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="course.subject" id="8Gs-Yu-bko">
+                            <dictionary key="options">
+                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                <string key="NSNullPlaceholder">No Subject</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="gBV-N8-AIC" firstAttribute="top" secondItem="Qlf-xX-vM5" secondAttribute="bottom" constant="1" id="1NA-eu-6qp"/>
+                <constraint firstItem="ZBm-pa-4Mu" firstAttribute="top" secondItem="Qlf-xX-vM5" secondAttribute="bottom" constant="1" id="9I5-FJ-WkU"/>
                 <constraint firstItem="0eb-j0-Bmc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="9Tw-1w-vHv"/>
                 <constraint firstAttribute="bottom" secondItem="0eb-j0-Bmc" secondAttribute="bottom" constant="20" id="AL1-Fn-Vkh"/>
-                <constraint firstAttribute="trailing" secondItem="M7i-3l-d92" secondAttribute="trailing" constant="20" id="GdO-vo-u8s"/>
-                <constraint firstItem="M7i-3l-d92" firstAttribute="top" secondItem="Qlf-xX-vM5" secondAttribute="bottom" constant="1" id="Ka3-8Q-qiS"/>
-                <constraint firstItem="M7i-3l-d92" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="PWj-QK-cXE"/>
+                <constraint firstItem="0eb-j0-Bmc" firstAttribute="top" secondItem="ZBm-pa-4Mu" secondAttribute="bottom" constant="8" id="Hig-ia-TAO"/>
+                <constraint firstItem="0eb-j0-Bmc" firstAttribute="top" secondItem="PJH-Ac-0qn" secondAttribute="bottom" constant="8" id="JRJ-Qw-7Hq"/>
+                <constraint firstItem="ZBm-pa-4Mu" firstAttribute="leading" secondItem="PJH-Ac-0qn" secondAttribute="trailing" constant="8" id="JUf-9O-Ndm"/>
+                <constraint firstItem="gBV-N8-AIC" firstAttribute="leading" secondItem="ZBm-pa-4Mu" secondAttribute="trailing" constant="8" id="NCc-iT-3fb"/>
                 <constraint firstAttribute="trailing" secondItem="Qlf-xX-vM5" secondAttribute="trailing" constant="20" id="U23-5J-rZR"/>
                 <constraint firstItem="Qlf-xX-vM5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Voq-B5-7AZ"/>
+                <constraint firstItem="PJH-Ac-0qn" firstAttribute="centerY" secondItem="gBV-N8-AIC" secondAttribute="centerY" id="aVh-vg-Odo"/>
                 <constraint firstAttribute="trailing" secondItem="0eb-j0-Bmc" secondAttribute="trailing" constant="20" id="b17-dn-gQ8"/>
-                <constraint firstItem="0eb-j0-Bmc" firstAttribute="top" secondItem="M7i-3l-d92" secondAttribute="bottom" constant="8" id="eUb-EV-0qo"/>
+                <constraint firstItem="PJH-Ac-0qn" firstAttribute="top" secondItem="Qlf-xX-vM5" secondAttribute="bottom" constant="1" id="fvZ-kf-FKC"/>
+                <constraint firstItem="PJH-Ac-0qn" firstAttribute="centerY" secondItem="ZBm-pa-4Mu" secondAttribute="centerY" id="hQ1-aq-DXw"/>
                 <constraint firstItem="Qlf-xX-vM5" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="m2W-DR-Qst"/>
+                <constraint firstItem="PJH-Ac-0qn" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="pj0-88-hBI"/>
+                <constraint firstItem="0eb-j0-Bmc" firstAttribute="top" secondItem="gBV-N8-AIC" secondAttribute="bottom" constant="8" id="yJI-Qj-Dp2"/>
             </constraints>
             <point key="canvasLocation" x="417" y="276"/>
         </customView>

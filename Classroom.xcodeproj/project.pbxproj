@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331A2E05309D8E2B0091FAEE /* NSColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 331A2E04309D8E2B0091FAEE /* NSColor+hex.m */; };
 		331A7E6130831ADB00868B87 /* GCCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 331A7E5F30831ADB00868B87 /* GCCourseViewController.m */; };
 		331A7E6230831ADB00868B87 /* GCCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 331A7E6030831ADB00868B87 /* GCCourseViewController.xib */; };
 		332A06C22F90450800AE2FD6 /* GCMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 332A06C12F90450800AE2FD6 /* GCMainWindow.m */; };
@@ -18,9 +19,12 @@
 		33686F3F2F9BED3A00E7112D /* GCDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33686F3E2F9BED3A00E7112D /* GCDataManager.m */; };
 		3378000D308016F5000B3DF5 /* GCSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3378000C308016F5000B3DF5 /* GCSettingsManager.m */; };
 		337F0B362F92EF6A00AA3ABF /* GCLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F0B352F92EF6A00AA3ABF /* GCLoginManager.m */; };
-		339A69D4308400620002FC0C /* GCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A69D3308400620002FC0C /* GCCourse.m */; };
-		339A69D7308400630002FC0C /* GCUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A69D6308400630002FC0C /* GCUserProfile.m */; };
-		339A69DA308400630002FC0C /* GCAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A69D9308400630002FC0C /* GCAnnouncement.m */; };
+		338A9D5E30AA98A400D7412B /* GCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A9D5D30AA98A400D7412B /* GCPost.m */; };
+		338A9D6130AA98A700D7412B /* GCMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A9D6030AA98A700D7412B /* GCMaterial.m */; };
+		338A9D6430AA98A700D7412B /* GCUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A9D6330AA98A700D7412B /* GCUserProfile.m */; };
+		338A9D6730AA98A700D7412B /* GCCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A9D6630AA98A700D7412B /* GCCourse.m */; };
+		338A9D6A30AA98A700D7412B /* GCAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A9D6930AA98A700D7412B /* GCAnnouncement.m */; };
+		338A9D6E30AAA9A700D7412B /* GCPost+Computed.m in Sources */ = {isa = PBXBuildFile; fileRef = 338A9D6D30AAA9A700D7412B /* GCPost+Computed.m */; };
 		33A8B7AA2F9063630070D933 /* GCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7A82F9063630070D933 /* GCHomeViewController.m */; };
 		33A8B7AB2F9063630070D933 /* GCHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A8B7A92F9063630070D933 /* GCHomeViewController.xib */; };
 		33A8B7B02F9072840070D933 /* GCDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8B7AF2F9072840070D933 /* GCDataFetcher.m */; };
@@ -65,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		331A2DFF309CF54B0091FAEE /* GCInnerSchemas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCInnerSchemas.h; sourceTree = "<group>"; };
+		331A2E04309D8E2B0091FAEE /* NSColor+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+hex.m"; sourceTree = "<group>"; };
 		331A7E5E30831ADB00868B87 /* GCCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCourseViewController.h; sourceTree = "<group>"; };
 		331A7E5F30831ADB00868B87 /* GCCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCourseViewController.m; sourceTree = "<group>"; };
 		331A7E6030831ADB00868B87 /* GCCourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCCourseViewController.xib; sourceTree = "<group>"; };
@@ -85,12 +91,18 @@
 		3378000C308016F5000B3DF5 /* GCSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCSettingsManager.m; sourceTree = "<group>"; };
 		337F0B342F92EF6A00AA3ABF /* GCLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLoginManager.h; sourceTree = "<group>"; };
 		337F0B352F92EF6A00AA3ABF /* GCLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCLoginManager.m; sourceTree = "<group>"; };
-		339A69D2308400620002FC0C /* GCCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCourse.h; sourceTree = "<group>"; };
-		339A69D3308400620002FC0C /* GCCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCourse.m; sourceTree = "<group>"; };
-		339A69D5308400630002FC0C /* GCUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCUserProfile.h; sourceTree = "<group>"; };
-		339A69D6308400630002FC0C /* GCUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCUserProfile.m; sourceTree = "<group>"; };
-		339A69D8308400630002FC0C /* GCAnnouncement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAnnouncement.h; sourceTree = "<group>"; };
-		339A69D9308400630002FC0C /* GCAnnouncement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAnnouncement.m; sourceTree = "<group>"; };
+		338A9D5C30AA98A400D7412B /* GCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPost.h; sourceTree = "<group>"; };
+		338A9D5D30AA98A400D7412B /* GCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPost.m; sourceTree = "<group>"; };
+		338A9D5F30AA98A700D7412B /* GCMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMaterial.h; sourceTree = "<group>"; };
+		338A9D6030AA98A700D7412B /* GCMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCMaterial.m; sourceTree = "<group>"; };
+		338A9D6230AA98A700D7412B /* GCUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCUserProfile.h; sourceTree = "<group>"; };
+		338A9D6330AA98A700D7412B /* GCUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCUserProfile.m; sourceTree = "<group>"; };
+		338A9D6530AA98A700D7412B /* GCCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCourse.h; sourceTree = "<group>"; };
+		338A9D6630AA98A700D7412B /* GCCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCourse.m; sourceTree = "<group>"; };
+		338A9D6830AA98A700D7412B /* GCAnnouncement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAnnouncement.h; sourceTree = "<group>"; };
+		338A9D6930AA98A700D7412B /* GCAnnouncement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAnnouncement.m; sourceTree = "<group>"; };
+		338A9D6D30AAA9A700D7412B /* GCPost+Computed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GCPost+Computed.m"; sourceTree = "<group>"; };
+		338A9D6F30AAAA0000D7412B /* GCPost+Computed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GCPost+Computed.h"; sourceTree = "<group>"; };
 		33A8B7A72F9063630070D933 /* GCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHomeViewController.h; sourceTree = "<group>"; };
 		33A8B7A82F9063630070D933 /* GCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHomeViewController.m; sourceTree = "<group>"; };
 		33A8B7A92F9063630070D933 /* GCHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCHomeViewController.xib; sourceTree = "<group>"; };
@@ -164,6 +176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		331A2E03309D8E160091FAEE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				331A2E04309D8E2B0091FAEE /* NSColor+hex.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		331A7E5D30831AA200868B87 /* Course */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +257,32 @@
 			name = LoginManager;
 			sourceTree = "<group>";
 		};
+		338A9D6B30AAA8E900D7412B /* Computed */ = {
+			isa = PBXGroup;
+			children = (
+				338A9D6830AA98A700D7412B /* GCAnnouncement.h */,
+				338A9D6930AA98A700D7412B /* GCAnnouncement.m */,
+				338A9D6530AA98A700D7412B /* GCCourse.h */,
+				338A9D6630AA98A700D7412B /* GCCourse.m */,
+				338A9D6230AA98A700D7412B /* GCUserProfile.h */,
+				338A9D6330AA98A700D7412B /* GCUserProfile.m */,
+				338A9D5F30AA98A700D7412B /* GCMaterial.h */,
+				338A9D6030AA98A700D7412B /* GCMaterial.m */,
+				338A9D5C30AA98A400D7412B /* GCPost.h */,
+				338A9D5D30AA98A400D7412B /* GCPost.m */,
+			);
+			name = Computed;
+			sourceTree = "<group>";
+		};
+		338A9D6C30AAA8F400D7412B /* Manual */ = {
+			isa = PBXGroup;
+			children = (
+				338A9D6D30AAA9A700D7412B /* GCPost+Computed.m */,
+				338A9D6F30AAAA0000D7412B /* GCPost+Computed.h */,
+			);
+			name = Manual;
+			sourceTree = "<group>";
+		};
 		33A8B7A62F90634C0070D933 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +334,7 @@
 			children = (
 				33686F3D2F9BED3A00E7112D /* GCDataManager.h */,
 				33686F3E2F9BED3A00E7112D /* GCDataManager.m */,
+				331A2DFF309CF54B0091FAEE /* GCInnerSchemas.h */,
 			);
 			name = DataManager;
 			sourceTree = "<group>";
@@ -295,12 +342,8 @@
 		33A8B7C02F9109D50070D933 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				339A69D8308400630002FC0C /* GCAnnouncement.h */,
-				339A69D9308400630002FC0C /* GCAnnouncement.m */,
-				339A69D5308400630002FC0C /* GCUserProfile.h */,
-				339A69D6308400630002FC0C /* GCUserProfile.m */,
-				339A69D2308400620002FC0C /* GCCourse.h */,
-				339A69D3308400620002FC0C /* GCCourse.m */,
+				338A9D6C30AAA8F400D7412B /* Manual */,
+				338A9D6B30AAA8E900D7412B /* Computed */,
 				33A8B7C12F9109FA0070D933 /* Models.h */,
 			);
 			name = Models;
@@ -369,6 +412,7 @@
 		33AFE3B82F7B7317006BA041 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				331A2E03309D8E160091FAEE /* Extensions */,
 				33AFE3B92F7B7317006BA041 /* Classroom-Info.plist */,
 				33AFE3BA2F7B7317006BA041 /* InfoPlist.strings */,
 				33AFE3BD2F7B7317006BA041 /* main.m */,
@@ -550,22 +594,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338A9D6130AA98A700D7412B /* GCMaterial.m in Sources */,
 				332A06C22F90450800AE2FD6 /* GCMainWindow.m in Sources */,
 				33686F3F2F9BED3A00E7112D /* GCDataManager.m in Sources */,
 				33455C922F97A1A4001CA394 /* GCProfileViewController.m in Sources */,
+				331A2E05309D8E2B0091FAEE /* NSColor+hex.m in Sources */,
+				338A9D5E30AA98A400D7412B /* GCPost.m in Sources */,
 				331A7E6130831ADB00868B87 /* GCCourseViewController.m in Sources */,
-				339A69DA308400630002FC0C /* GCAnnouncement.m in Sources */,
+				338A9D6A30AA98A700D7412B /* GCAnnouncement.m in Sources */,
 				33A8B7B02F9072840070D933 /* GCDataFetcher.m in Sources */,
-				339A69D7308400630002FC0C /* GCUserProfile.m in Sources */,
 				332C14663084560D009CE9C9 /* GCAnnouncementInfoWindowController.m in Sources */,
 				3378000D308016F5000B3DF5 /* GCSettingsManager.m in Sources */,
 				33AFE3C52F7B7317006BA041 /* GCAppDelegate.m in Sources */,
 				332C146B30847A25009CE9C9 /* GCImageCache.m in Sources */,
 				33AFE3CB2F7B7317006BA041 /* Classroom.xcdatamodeld in Sources */,
-				339A69D4308400620002FC0C /* GCCourse.m in Sources */,
+				338A9D6E30AAA9A700D7412B /* GCPost+Computed.m in Sources */,
 				33A8B7AA2F9063630070D933 /* GCHomeViewController.m in Sources */,
+				338A9D6730AA98A700D7412B /* GCCourse.m in Sources */,
 				33AFE3BE2F7B7317006BA041 /* main.m in Sources */,
 				337F0B362F92EF6A00AA3ABF /* GCLoginManager.m in Sources */,
+				338A9D6430AA98A700D7412B /* GCUserProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -711,7 +759,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -757,10 +805,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classroom/Classroom-Prefix.pch";
 				INFOPLIST_FILE = "Classroom/Classroom-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -771,10 +820,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Classroom/Classroom-Prefix.pch";
 				INFOPLIST_FILE = "Classroom/Classroom-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

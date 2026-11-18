@@ -38,8 +38,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self resizeWindowToFitText];
-    NSLog(@"photo url: %@", self.announcement.creatorUser.photoUrl);
-    [GCImageCache loadImageFromURL:[NSURL URLWithString:self.announcement.creatorUser.photoUrl] completion:^(NSImage* img, NSError* err){
+    [GCImageCache loadImageFromURL:[NSURL URLWithString:self.announcement.author.photoUrl] completion:^(NSImage* img, NSError* err){
         if (err || !img) {
             self.pfp.image = [NSImage imageNamed:NSImageNameCaution];
         } else {

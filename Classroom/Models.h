@@ -8,3 +8,6 @@
 
 #import "GCCourse.h"
 #import "GCUserProfile.h"
+#import "GCPost.h"
+#import "GCMaterial.h"
+#import "GCAnnouncement.h"

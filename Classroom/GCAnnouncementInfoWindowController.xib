@@ -30,22 +30,16 @@
                             <constraint firstAttribute="height" constant="32" id="Bl8-PA-kA2"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSUser" id="B1l-e0-axk"/>
-                        <connections>
-                            <binding destination="-2" name="valueURL" keyPath="announcement.creatorUser.photoUrl" id="mdb-0G-L7C"/>
-                        </connections>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FGd-V9-8Ak">
-                        <rect key="frame" x="54" y="16" width="241" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="237" id="Kzd-mM-MlN"/>
-                        </constraints>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FGd-V9-8Ak">
+                        <rect key="frame" x="54" y="23" width="375" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="c0R-fZ-zRh">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="announcement.creatorUser.fullName" id="kWS-i0-rZV">
+                            <binding destination="-2" name="value" keyPath="announcement.author.name" id="gBg-J4-Qiv">
                                 <dictionary key="options">
                                     <string key="NSNullPlaceholder">Unknown</string>
                                 </dictionary>
@@ -60,86 +54,6 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSInfo" id="JHB-cq-kXs"/>
                     </imageView>
-                    <stackView orientation="horizontal" alignment="centerY" spacing="0.0" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Nh9-Pg-Tef">
-                        <rect key="frame" x="301" y="10" width="163" height="14"/>
-                        <endViews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RiM-FH-QLl">
-                                <rect key="frame" x="6" y="15" width="38" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Updated " id="tas-xa-Gov">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="klA-ZP-VL2">
-                                <rect key="frame" x="6" y="15" width="38" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="3vk-t4-T1K">
-                                    <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="d MMM yyyy h:mm a" id="sBh-1M-mq5"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <binding destination="-2" name="value" keyPath="announcement.updateTime" id="P6X-dD-FXp">
-                                            <dictionary key="options">
-                                                <string key="NSNullPlaceholder">Never</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textFieldCell>
-                            </textField>
-                        </endViews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="GcD-dY-DtK"/>
-                        </constraints>
-                        <visibilityPriorities>
-                            <integer value="1000"/>
-                            <integer value="1000"/>
-                        </visibilityPriorities>
-                        <customSpacing>
-                            <real value="3.4028234663852886e+38"/>
-                            <real value="3.4028234663852886e+38"/>
-                        </customSpacing>
-                    </stackView>
-                    <stackView orientation="horizontal" alignment="centerY" spacing="0.0" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="nVi-qg-dKg">
-                        <rect key="frame" x="301" y="24" width="163" height="14"/>
-                        <endViews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y88-PC-kX7">
-                                <rect key="frame" x="6" y="15" width="38" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Created " id="sLj-fS-3wE">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ige-Gm-riW">
-                                <rect key="frame" x="6" y="15" width="38" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="YX0-vv-DzK">
-                                    <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="d MMM yyyy h:mm a" id="GIu-BW-x0N"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="-2" name="value" keyPath="announcement.creationTime" id="MzH-Sx-VEs">
-                                        <dictionary key="options">
-                                            <string key="NSNullPlaceholder">Never</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </textField>
-                        </endViews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14" id="nSP-a9-WlE"/>
-                        </constraints>
-                        <visibilityPriorities>
-                            <integer value="1000"/>
-                            <integer value="1000"/>
-                        </visibilityPriorities>
-                        <customSpacing>
-                            <real value="3.4028234663852886e+38"/>
-                            <real value="3.4028234663852886e+38"/>
-                        </customSpacing>
-                    </stackView>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm1-cP-6t4">
                         <rect key="frame" x="20" y="57" width="440" height="307"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="tpH-oC-gJG">
@@ -147,7 +61,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="nt2-fG-Aw6">
-                                    <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="223" height="305"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="438" height="305"/>
@@ -164,7 +78,7 @@
                                     <size key="minSize" width="438" height="305"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <connections>
-                                        <binding destination="-2" name="attributedString" keyPath="announcement.text" id="6kk-8L-uDA">
+                                        <binding destination="-2" name="attributedString" keyPath="announcement.attributedString" id="xp3-be-Bok">
                                             <dictionary key="options">
                                                 <string key="NSNullPlaceholder">The content of this announcement is unknown... please report this as a bug.</string>
                                             </dictionary>
@@ -218,11 +132,57 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L6a-Ko-4DQ">
+                        <rect key="frame" x="54" y="8" width="375" height="14"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Label" id="wF3-hc-mHk">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.announcement.author.emailAddress" id="OBz-qp-cY3"/>
+                        </connections>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ige-Gm-riW">
+                        <rect key="frame" x="433" y="24" width="33" height="14"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="YX0-vv-DzK">
+                            <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="'Created' d MMM yyyy h:mm a" id="GIu-BW-x0N"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="announcement.publishTime" id="xXV-IG-O0E">
+                                <dictionary key="options">
+                                    <string key="NSNullPlaceholder">Never</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="klA-ZP-VL2">
+                        <rect key="frame" x="433" y="10" width="33" height="14"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="3vk-t4-T1K">
+                            <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="'Edited' d MMM yyyy h:mm a" id="sBh-1M-mq5"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="announcement.editedDate" id="mek-kK-418">
+                                    <dictionary key="options">
+                                        <string key="NSNullPlaceholder">Not Edited</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="klA-ZP-VL2" firstAttribute="top" secondItem="ige-Gm-riW" secondAttribute="bottom" id="05D-Sn-4Mn"/>
+                    <constraint firstItem="FGd-V9-8Ak" firstAttribute="leading" secondItem="vsp-sa-PjA" secondAttribute="trailing" constant="8" id="20o-pg-xPR"/>
+                    <constraint firstItem="ige-Gm-riW" firstAttribute="trailing" secondItem="klA-ZP-VL2" secondAttribute="trailing" id="3IY-ag-15u"/>
                     <constraint firstItem="wwS-p5-O8l" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="5q4-Eh-pn5"/>
                     <constraint firstItem="P5m-nc-Rhp" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="6Jv-xx-YkZ"/>
-                    <constraint firstItem="nVi-qg-dKg" firstAttribute="top" secondItem="6IN-Fx-qLP" secondAttribute="bottom" constant="10" id="7Lc-A3-N2u"/>
+                    <constraint firstAttribute="trailing" secondItem="ige-Gm-riW" secondAttribute="trailing" constant="16" id="89f-Sv-tU1"/>
                     <constraint firstItem="o2W-2L-92a" firstAttribute="top" secondItem="P5m-nc-Rhp" secondAttribute="bottom" id="AI8-oH-Txg"/>
                     <constraint firstItem="vsp-sa-PjA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="16" id="BaY-xY-xSp"/>
                     <constraint firstAttribute="trailing" secondItem="6IN-Fx-qLP" secondAttribute="trailing" id="Bqc-NF-10t"/>
@@ -230,25 +190,26 @@
                     <constraint firstItem="Lb0-dQ-H1W" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="CBZ-36-eMQ"/>
                     <constraint firstItem="P5m-nc-Rhp" firstAttribute="leading" secondItem="wwS-p5-O8l" secondAttribute="trailing" constant="8" id="FNX-yN-qSN"/>
                     <constraint firstItem="pm1-cP-6t4" firstAttribute="top" secondItem="Lb0-dQ-H1W" secondAttribute="bottom" constant="8" id="Gss-gL-UqJ"/>
-                    <constraint firstAttribute="bottom" secondItem="Nh9-Pg-Tef" secondAttribute="bottom" constant="10" id="Hn2-67-MEU"/>
                     <constraint firstItem="6IN-Fx-qLP" firstAttribute="top" secondItem="pm1-cP-6t4" secondAttribute="bottom" constant="8" id="JEe-S4-cPn"/>
-                    <constraint firstAttribute="trailing" secondItem="Nh9-Pg-Tef" secondAttribute="trailing" constant="16" id="K0k-6O-97a"/>
-                    <constraint firstAttribute="trailing" secondItem="nVi-qg-dKg" secondAttribute="trailing" constant="16" id="NPP-gZ-AnU"/>
-                    <constraint firstItem="Nh9-Pg-Tef" firstAttribute="leading" secondItem="FGd-V9-8Ak" secondAttribute="trailing" constant="8" id="O0F-9g-3QU"/>
+                    <constraint firstItem="FGd-V9-8Ak" firstAttribute="leading" secondItem="L6a-Ko-4DQ" secondAttribute="leading" id="JUQ-G8-FHX"/>
                     <constraint firstItem="wwS-p5-O8l" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="RNS-Wf-6e1"/>
+                    <constraint firstItem="klA-ZP-VL2" firstAttribute="leading" secondItem="L6a-Ko-4DQ" secondAttribute="trailing" constant="8" id="RPS-Ou-fNR"/>
                     <constraint firstItem="o2W-2L-92a" firstAttribute="leading" secondItem="wwS-p5-O8l" secondAttribute="trailing" constant="8" id="UDg-HP-2tO"/>
                     <constraint firstAttribute="bottom" secondItem="vsp-sa-PjA" secondAttribute="bottom" constant="8" id="a1Z-84-H5C"/>
+                    <constraint firstItem="ige-Gm-riW" firstAttribute="leading" secondItem="FGd-V9-8Ak" secondAttribute="trailing" constant="8" id="b0s-Yy-w30"/>
                     <constraint firstAttribute="trailing" secondItem="o2W-2L-92a" secondAttribute="trailing" constant="20" id="cQA-CM-vsh"/>
+                    <constraint firstItem="FGd-V9-8Ak" firstAttribute="top" secondItem="6IN-Fx-qLP" secondAttribute="bottom" constant="8" id="csD-Jg-ymL"/>
+                    <constraint firstAttribute="trailing" secondItem="klA-ZP-VL2" secondAttribute="trailing" constant="16" id="dGc-ay-tQt"/>
                     <constraint firstItem="pm1-cP-6t4" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="gJR-0U-TK3"/>
-                    <constraint firstItem="FGd-V9-8Ak" firstAttribute="leading" secondItem="vsp-sa-PjA" secondAttribute="trailing" constant="8" symbolic="YES" id="iEZ-84-ze3"/>
+                    <constraint firstAttribute="bottom" secondItem="klA-ZP-VL2" secondAttribute="bottom" constant="10" id="gUL-2Y-9bY"/>
                     <constraint firstItem="Lb0-dQ-H1W" firstAttribute="top" secondItem="o2W-2L-92a" secondAttribute="bottom" constant="8" id="j13-E8-WNh"/>
                     <constraint firstAttribute="trailing" secondItem="pm1-cP-6t4" secondAttribute="trailing" constant="20" id="lL8-7Y-WCu"/>
                     <constraint firstItem="vsp-sa-PjA" firstAttribute="top" secondItem="6IN-Fx-qLP" secondAttribute="bottom" constant="8" id="m5g-SC-TiA"/>
-                    <constraint firstItem="FGd-V9-8Ak" firstAttribute="centerY" secondItem="vsp-sa-PjA" secondAttribute="centerY" id="rVP-pp-3LX"/>
-                    <constraint firstItem="Nh9-Pg-Tef" firstAttribute="top" secondItem="nVi-qg-dKg" secondAttribute="bottom" id="thw-sj-tGl"/>
-                    <constraint firstItem="nVi-qg-dKg" firstAttribute="leading" secondItem="FGd-V9-8Ak" secondAttribute="trailing" constant="8" id="uJM-ff-A0C"/>
+                    <constraint firstItem="L6a-Ko-4DQ" firstAttribute="leading" secondItem="vsp-sa-PjA" secondAttribute="trailing" constant="8" id="t4l-ST-iWZ"/>
+                    <constraint firstItem="ige-Gm-riW" firstAttribute="top" secondItem="6IN-Fx-qLP" secondAttribute="bottom" constant="10" id="vdb-yU-h5x"/>
+                    <constraint firstItem="L6a-Ko-4DQ" firstAttribute="top" secondItem="FGd-V9-8Ak" secondAttribute="bottom" constant="1" id="vpC-5T-2IY"/>
                     <constraint firstAttribute="trailing" secondItem="Lb0-dQ-H1W" secondAttribute="trailing" id="wyI-jJ-nAJ"/>
-                    <constraint firstItem="Nh9-Pg-Tef" firstAttribute="top" secondItem="nVi-qg-dKg" secondAttribute="bottom" id="ys4-Db-CaD"/>
+                    <constraint firstAttribute="bottom" secondItem="L6a-Ko-4DQ" secondAttribute="bottom" constant="8" id="zJr-Zo-1AU"/>
                 </constraints>
             </view>
             <connections>

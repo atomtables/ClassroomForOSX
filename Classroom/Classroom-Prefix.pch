@@ -7,4 +7,8 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import "GCConstants.h" 
+
+    @interface NSColor (Hex)
+        + (NSColor *)colorFromHexString:(NSString *)hexString;
+    @end
 #endif
